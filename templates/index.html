@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+
+{% block tree_view %}
+
+                  
+{% endblock tree_view %}
+
+                  
+<!-- Relocated Submit Button Outside the Form -->
+ {% block runbutton %}
+<div id="button-container">
+    <button type="button" class="run-button">▶</button>
+</div>
+{% endblock runbutton %}
+{% block mainContent %}
+
+{% comment %} <h1>{{data}}</h1> {% endcomment %}
+<form id="pythonForm">
+    {% csrf_token %}
+    <div id="editor-container" style="height:90px;"></div>
+    <textarea id="code-editor" class="code-editor" name="code" style="Display: none;" ></textarea>
+</form>  
+
+
+
+<script>
+    // Initialize CodeMirror
+    const val = '{{ data|escapejs }}';
+    const editor = CodeMirror(document.getElementById('editor-container'), {
+        mode: 'python',
+        theme: 'dracula',
+        value : val ,
+        lineNumbers: true,
+        indentUnit: 4,           // Python standard 4-space indentation
+        smartIndent: true,       // Enable smart indentation
+        tabSize: 4, 
+    });
+
+    // Handle button click to manually submit the form
+    document.querySelector("#button-container .run-button").addEventListener("click", function() {
+        // Sync CodeMirror content to the hidden textarea inside the form
+        document.getElementById("code-editor").value = editor.getValue();
+
+        // Prevent form submission and use AJAX instead
+        event.preventDefault(); // Prevent form from reloading the page
+
+        // Create FormData from the form element
+        const formData = new FormData(document.getElementById("pythonForm"));
+
+        // Send the form data via fetch
+        fetch("", {
+            method: "POST",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest", // Indicate AJAX request
+            },
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display server response in output div
+            document.getElementById("output").textContent = data.output;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            document.getElementById("output").textContent = "An error occurred.";
+        });
+    });
+</script>
+
+{% endblock mainContent %}
+
+{% block outputblock %}
+<div class="terminal-container">
+    <textarea id="output" class="terminal" placeholder="Type your command here..."></textarea>
+</div>
+{% endblock outputblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block miaincontaint %}
+    <h1>Text Area Example</h1>
+
+    <!-- Form with method POST and an id for JS to target -->
+    <form id="pythonForm" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    <h1 id="output">{{ output_of_code }}</h1>
+
+{% endblock miaincontaint %}
+
+{% block outputblock %}
+{% endblock outputblock %}
+
+<script>
+    // Ensure the form does not submit traditionally
+    document.getElementById("pythonForm").addEventListener("submit", function (event) {
+        event.preventDefault();  // Prevent the form from submitting traditionally
+
+        const formData = new FormData(this);  // Get form data
+        fetch("", {
+            method: "POST",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest", // Make it clear that it's an AJAX request
+            },
+            body: formData,  // Send the form data
+        })
+        .then(response => response.json())  // Handle the JSON response
+        .then(data => {
+            document.getElementById("output").textContent = data.output;  // Display output in the same page
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            document.getElementById("output").textContent = "An error occurred.";  // Show error if fetch fails
+        });
+    });
+</script>
