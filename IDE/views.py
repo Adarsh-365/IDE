@@ -27,8 +27,8 @@ def home_page(request):
     with open("static/newfile.py","r") as f:
         data = f.readlines()
     data = "".join(data)
-    direc = list_files_and_folders('static/FILES')
-    df ={"data":data,'structure':direc}
+   
+    df ={"data":data}
     
   
     
