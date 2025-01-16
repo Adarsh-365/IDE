@@ -18,3 +18,6 @@ application = get_wsgi_application()
 
 # Wrap the application with WhiteNoise
 application = WhiteNoise(application)
+
+# Define app or handler for Vercel
+app = application  # Vercel expects this
