@@ -1,0 +1,240 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    background-color: rgb(100, 225, 183);
+}
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+button {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+p {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Layout containers */
+.container {
+    display: flex;
+    background-color: rgb(1, 21, 9);
+    flex-grow: 1;
+    overflow: hidden;
+    width: 100px;
+ 
+}
+
+/* Left Sidebar */
+.left-sidebar {
+    width: 250px;
+    height: 100%;
+    cursor: pointer; 
+    background-color:rgb(3, 42, 43);
+    color: white;
+    position: fixed;
+    border: 5px solid black;
+    top: 48px;
+    left: -250px;
+    overflow-y: auto;
+    transition: left 0.3s;
+}
+
+.left-sidebar.open {
+    left: 0;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+  
+    padding: 20px;
+    margin-top: 0%;
+    height: 100vh;
+    border: 5px solid black;
+    background-color: rgb(162, 230, 199) ;
+    transition: margin-left 0.3s, margin-bottom 0.3s;
+    
+}
+
+.main-content.left-shift {
+    margin-left: 250px;
+}
+
+.main-content.left-down {
+    margin-bottom: 200px;
+}
+
+/* Bottom Sidebar */
+.bottom-sidebar {
+    height: 200px;
+    border: 5px solid black;
+    background-color: #042a2a; /* Green */
+    color: white;
+    position: fixed;
+    bottom: -200px;
+    left: 0;
+    width: 100%;
+    transition: bottom 0.3s, left 0.3s, width 0.3s;
+}
+
+.bottom-sidebar.open {
+    bottom: 0;
+}
+
+/* Adjust bottom sidebar position when left sidebar is open */
+.bottom-sidebar.shift-left {
+    left: 250px;
+    width: calc(100% - 250px); /* Push left by 250px (for left sidebar) */
+}
+
+
+
+
+.terminal-container {
+    width: 200%;
+    max-width: 800px;
+    height: 25vh;
+}
+
+.terminal {
+    width: 150%;
+    height: 100%;
+    background-color: #000;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    font-size: 16px;
+    font-family: 'Courier New', monospace;
+    padding: 10px;
+    resize: none;
+    outline: none;
+    overflow-y: auto;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.terminal:focus {
+    border-color: #00cc00;
+}
+
+
+#editor-container {
+    width: 100%;  /* Ensure it takes up the full width of the parent */
+    height: 500px;  /* Adjust the height as needed */
+    margin: 0;
+}
+.CodeMirror {
+    
+    border: 5px solid black;
+    height: 445px;
+  }
+
+.run-button {
+    background-color: #000000; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    /* padding: 10px 20px; Some padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make the button inline */
+    font-size: 10px; /* Adjust font size */
+    margin: 4px 2px; /* Add some margin */
+    cursor: pointer; /* Pointer/hand icon on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.run-button:hover {
+    background-color: #04edf9; /* Darker green on hover */
+}
+
+
+.navbar {
+padding-top: 0.125rem;
+padding-bottom: 0.125rem;
+}
+
+.navbar-nav .nav-link {
+padding-top: 0.25rem;
+padding-bottom: 0.25rem;
+}
+
+.navbar-toggler-icon {
+height: 10px;
+}
+
+/* Tree View Styling */
+.tree-view ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.tree-view li {
+    margin: 8px 0;
+}
+
+.tree-view .toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.tree-view .toggle:hover {
+    background-color: #495057;
+}
+
+.tree-view .toggle::before {
+    content: "▶";
+    font-size: 0.9rem;
+    margin-right: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.tree-view .collapse.show + .toggle::before {
+    transform: rotate(90deg); /* Rotate arrow for open folders */
+}
+
+/* File and Folder Icons */
+.tree-view .toggle {
+    color: #f8f9fa;
+}
+
+.tree-view li span.toggle {
+    font-weight: bold;
+}
+
+.tree-view ul.collapse li {
+    color: #adb5bd; /* Light grey for nested items */
+    margin-left: 1rem;
+}
+
+/* Scrollbar Styling */
+.left-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.left-sidebar::-webkit-scrollbar-thumb {
+    background-color: #495057;
+    border-radius: 4px;
+}
+
+.left-sidebar::-webkit-scrollbar-track {
+    background-color: #343a40;
+}
