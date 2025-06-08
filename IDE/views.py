@@ -4,14 +4,15 @@ from django.shortcuts import render
 from .forms import PYTHON_IDE
 from .compiler import Compiler
 from .utility import list_files_and_folders
-
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 def run_code(request,save):
    
         code = request.POST.get("code", "")
         if code:
             if save:
-                with open("static/newfile.py","w") as f:
+                file_path = staticfiles_storage.path('newfile.py')
+                with open(file_path,"w") as f:
                     temp = code.split("\n")
                     f.writelines(temp)
             Com = Compiler(code)
@@ -23,8 +24,8 @@ def home_page(request):
     if request.method == "POST" and request.headers.get("X-Requested-With") == "XMLHttpRequest":
         return run_code(request,True)
     
-    
-    with open("static/newfile.py","r") as f:
+    file_path = staticfiles_storage.path('newfile.py')
+    with open(file_path,"r") as f:
         data = f.readlines()
     data = "".join(data)
    
