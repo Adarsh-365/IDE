@@ -1,179 +1,183 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0px;
-    background-color: rgb(100, 225, 183);
-}
-textarea {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-button {
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-}
-p {
-    margin-top: 20px;
-    font-size: 16px;
-}
+/* Modern UI Theme for IDE */
 
 body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #f4f4f4;
+    min-height: 100vh;
 }
 
-/* Layout containers */
+textarea, .terminal {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: none;
+    background: #23272e;
+    color: #e0e0e0;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s;
+}
+
+textarea:focus, .terminal:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #00e6d0;
+}
+
+button, .run-button {
+    padding: 10px 22px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+    background: linear-gradient(90deg, #00e6d0 0%, #007cf0 100%);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover, .run-button:hover {
+    background: linear-gradient(90deg, #007cf0 0%, #00e6d0 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
 .container {
     display: flex;
-    background-color: rgb(1, 21, 9);
+    background: transparent;
     flex-grow: 1;
     overflow: hidden;
-    width: 100px;
- 
+    width: 100%;
 }
 
-/* Left Sidebar */
 .left-sidebar {
-    width: 250px;
+    width: 240px;
     height: 100%;
-    cursor: pointer; 
-    background-color:rgb(3, 42, 43);
-    color: white;
+    background: #23272e;
+    color: #f4f4f4;
     position: fixed;
-    border: 5px solid black;
-    top: 48px;
-    left: -250px;
+    border: none;
+    top: 56px;
+    left: -240px;
     overflow-y: auto;
     transition: left 0.3s;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+    border-radius: 0 12px 12px 0;
 }
 
 .left-sidebar.open {
     left: 0;
 }
 
-/* Main Content */
 .main-content {
     flex-grow: 1;
-  
-    padding: 20px;
-    margin-top: 0%;
+    padding: 32px;
+    margin-top: 0;
+    margin-left: 0;
     height: 100vh;
-    border: 5px solid black;
-    background-color: rgb(162, 230, 199) ;
+    background: rgba(36, 41, 46, 0.98);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
     transition: margin-left 0.3s, margin-bottom 0.3s;
-    
 }
 
 .main-content.left-shift {
-    margin-left: 250px;
+    margin-left: 240px;
 }
 
 .main-content.left-down {
     margin-bottom: 200px;
 }
 
-/* Bottom Sidebar */
 .bottom-sidebar {
     height: 200px;
-    border: 5px solid black;
-    background-color: #042a2a; /* Green */
-    color: white;
+    background: #181c20;
+    color: #f4f4f4;
     position: fixed;
     bottom: -200px;
     left: 0;
     width: 100%;
     transition: bottom 0.3s, left 0.3s, width 0.3s;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.12);
+    border-radius: 12px 12px 0 0;
 }
 
 .bottom-sidebar.open {
     bottom: 0;
 }
 
-/* Adjust bottom sidebar position when left sidebar is open */
 .bottom-sidebar.shift-left {
-    left: 250px;
-    width: calc(100% - 250px); /* Push left by 250px (for left sidebar) */
+    left: 240px;
+    width: calc(100% - 240px);
 }
 
-
-
-
 .terminal-container {
-    width: 200%;
-    max-width: 800px;
-    height: 25vh;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 0;
 }
 
 .terminal {
-    width: 150%;
+    width: 100%;
     height: 100%;
-    background-color: #000;
-    border: 2px solid #00ff00;
-    color: #00ff00;
+    background: #181c20;
+    border: none;
+    color: #00e6d0;
     font-size: 16px;
-    font-family: 'Courier New', monospace;
-    padding: 10px;
+    font-family: 'Fira Mono', 'Courier New', monospace;
+    padding: 12px;
+    border-radius: 8px;
     resize: none;
     outline: none;
     overflow-y: auto;
-    white-space: nowrap;
-    word-wrap: normal;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
-
-.terminal:focus {
-    border-color: #00cc00;
-}
-
 
 #editor-container {
-    width: 100%;  /* Ensure it takes up the full width of the parent */
-    height: 500px;  /* Adjust the height as needed */
+    width: 100%;
+    height: 500px;
     margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
 }
+
 .CodeMirror {
-    
-    border: 5px solid black;
+    border: none;
+    border-radius: 12px;
     height: 445px;
-  }
-
-.run-button {
-    background-color: #000000; /* Green background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    /* padding: 10px 20px; Some padding */
-    text-align: center; /* Center the text */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Make the button inline */
-    font-size: 10px; /* Adjust font size */
-    margin: 4px 2px; /* Add some margin */
-    cursor: pointer; /* Pointer/hand icon on hover */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    font-size: 15px;
+    background: #23272e;
+    color: #f4f4f4;
 }
-
-.run-button:hover {
-    background-color: #04edf9; /* Darker green on hover */
-}
-
 
 .navbar {
-padding-top: 0.125rem;
-padding-bottom: 0.125rem;
+    background: #23272e !important;
+    border-bottom: 1px solid #222;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #00e6d0 !important;
+    letter-spacing: 1px;
 }
 
 .navbar-nav .nav-link {
-padding-top: 0.25rem;
-padding-bottom: 0.25rem;
+    color: #f4f4f4 !important;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 }
 
 .navbar-toggler-icon {
-height: 10px;
+    height: 16px;
 }
 
 /* Tree View Styling */
@@ -191,29 +195,28 @@ height: 10px;
     display: flex;
     align-items: center;
     font-size: 1rem;
-    padding: 5px;
-    border-radius: 5px;
-    transition: background-color 0.2s ease-in-out;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
 }
 
 .tree-view .toggle:hover {
-    background-color: #495057;
+    background: #2d323a;
 }
 
 .tree-view .toggle::before {
     content: "▶";
     font-size: 0.9rem;
     margin-right: 8px;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s;
 }
 
 .tree-view .collapse.show + .toggle::before {
-    transform: rotate(90deg); /* Rotate arrow for open folders */
+    transform: rotate(90deg);
 }
 
-/* File and Folder Icons */
 .tree-view .toggle {
-    color: #f8f9fa;
+    color: #00e6d0;
 }
 
 .tree-view li span.toggle {
@@ -221,7 +224,7 @@ height: 10px;
 }
 
 .tree-view ul.collapse li {
-    color: #adb5bd; /* Light grey for nested items */
+    color: #adb5bd;
     margin-left: 1rem;
 }
 
@@ -231,10 +234,10 @@ height: 10px;
 }
 
 .left-sidebar::-webkit-scrollbar-thumb {
-    background-color: #495057;
+    background: #2d323a;
     border-radius: 4px;
 }
 
 .left-sidebar::-webkit-scrollbar-track {
-    background-color: #343a40;
+    background: #23272e;
 }

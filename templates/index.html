@@ -18,8 +18,8 @@
 {% comment %} <h1>{{data}}</h1> {% endcomment %}
 <form id="pythonForm">
     {% csrf_token %}
-    <div id="editor-container" style="height:90px;"></div>
-    <textarea id="code-editor" class="code-editor" name="code" style="Display: none;" ></textarea>
+    <div id="editor-container"></div> <!-- Remove style="height:120vh;" -->
+    <textarea id="code-editor" class="code-editor" name="code" style="display: none;"></textarea>
 </form>  
 
 
