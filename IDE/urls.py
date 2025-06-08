@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home_page),
-    path('problem/<int:problemid>',views.dyanmic_route)
+    path('',views.dyanmic_route),
+    path('problem/<int:problemid>',views.dyanmic_route),
+    path('<int:problemid>',views.dyanmic_route2),
 ]

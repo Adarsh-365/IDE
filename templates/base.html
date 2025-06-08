@@ -134,6 +134,9 @@
             } else {
               leftSidebar.classList.remove("shift-left");
             }
+
+             const editor = document.getElementById('editor-container');
+              editor.classList.toggle('expanded');
         }
         document.addEventListener('keydown', function(event) {
             if (event.ctrlKey && event.key === 'b') {  // Check if Ctrl key and 'b' key are pressed together
