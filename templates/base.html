@@ -125,18 +125,12 @@
 
         function toggleBottomSidebar() {
             const bottomSidebar = document.getElementById("bottomSidebar");
+            const mainContent = document.getElementById("mainContent");
             bottomSidebar.classList.toggle("open");
-            mainContent.classList.toggle("left-down");
+            mainContent.classList.toggle("right-shift");
 
-              // Adjust bottom sidebar width and position
-              if (bottomSidebar.classList.contains("open")) {
-                leftSidebar.classList.add("shift-left");
-            } else {
-              leftSidebar.classList.remove("shift-left");
-            }
-
-             const editor = document.getElementById('editor-container');
-              editor.classList.toggle('expanded');
+            const editor = document.getElementById('editor-container');
+            editor.classList.toggle('expanded');
         }
         document.addEventListener('keydown', function(event) {
             if (event.ctrlKey && event.key === 'b') {  // Check if Ctrl key and 'b' key are pressed together

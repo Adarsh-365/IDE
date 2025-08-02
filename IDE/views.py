@@ -56,6 +56,11 @@ def run_code(request,save):
     
 #     return render(request, "index.html",df)
 
+def home(request):
+    if request.method == "POST" and request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        return run_code(request,False)
+  
+    return render(request, "index.html")
 
 def dyanmic_route(request,problemid=1):
     if request.method == "POST" and request.headers.get("X-Requested-With") == "XMLHttpRequest":
