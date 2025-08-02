@@ -12,15 +12,15 @@ def run_code(request,save):
    
         code = request.POST.get("code", "")
         if code:
-            pik = {}
-            if os.path.exists("data.pickle") and os.path.getsize("data.pickle") > 0:
-                with open("data.pickle", 'rb') as f2:
-                    pik = pickle.load(f2)
-            problemid = str(request.session.get('problemid', '1'))
-            print(problemid)
-            pik[problemid] = code
-            with open("data.pickle", 'wb') as f:
-                pickle.dump(pik, f)
+            # pik = {}
+            # if os.path.exists("data.pickle") and os.path.getsize("data.pickle") > 0:
+            #     with open("data.pickle", 'rb') as f2:
+            #         pik = pickle.load(f2)
+            # problemid = str(request.session.get('problemid', '1'))
+            # print(problemid)
+            # pik[problemid] = code
+            # with open("data.pickle", 'wb') as f:
+            #     pickle.dump(pik, f)
 
             Com = Compiler(code)
             Com.run()
